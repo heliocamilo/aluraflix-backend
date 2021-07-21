@@ -63,8 +63,13 @@ public class VideoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletar(@PathVariable String id) {
-        videoRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Optional<Video> video = videoRepository.findById(id);
+        if (video.isPresent()) {
+            videoRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

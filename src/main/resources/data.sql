@@ -1,0 +1,1 @@
+INSERT INTO categorias(id, cor, titulo) VALUES(1, '#FF0000', 'Livre');

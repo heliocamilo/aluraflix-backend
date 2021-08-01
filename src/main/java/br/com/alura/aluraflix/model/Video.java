@@ -2,19 +2,26 @@ package br.com.alura.aluraflix.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "videos")
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "videos")
 @Getter
 @Setter
 public class Video {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String titulo;
     private String descricao;
     private String url;
+
+    @ManyToOne()
+    private Categoria categoria;
 
     public Video() {
     }

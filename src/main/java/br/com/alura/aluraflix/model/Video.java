@@ -20,7 +20,7 @@ public class Video {
     private String descricao;
     private String url;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
 
     public Video() {
